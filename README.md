@@ -1,1 +1,2 @@
 # getir-app
+buraya bakarlar
