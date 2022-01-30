@@ -6,11 +6,17 @@ import com.alpersayin.getir.payload.response.ApiResponse;
 import com.alpersayin.getir.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
+@Validated
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/book")
@@ -27,7 +33,7 @@ public class BookController {
     }
 
     @PatchMapping("/{id}/increase/{number}")
-    public ResponseEntity<ApiResponse<BookEntity>> increaseBookStock(@PathVariable String id, @PathVariable Integer number) {
+    public ResponseEntity<ApiResponse<BookEntity>> increaseBookStock(@PathVariable String id, @PathVariable @Min(1) @Max(50) Integer number) {
         ApiResponse<BookEntity> response = new ApiResponse<>();
         response.setData(bookService.increaseStock(id, number));
         response.setMessage("Stock increased.");
@@ -35,7 +41,7 @@ public class BookController {
     }
 
     @PatchMapping("/{id}/decrease/{number}")
-    public ResponseEntity<ApiResponse<BookEntity>> decreaseBookStock(@PathVariable String id, @PathVariable Integer number) {
+    public ResponseEntity<ApiResponse<BookEntity>> decreaseBookStock(@PathVariable String id, @PathVariable @Min(1) @Max(50) Integer number) {
         ApiResponse<BookEntity> response = new ApiResponse<>();
         response.setData(bookService.decreaseStock(id, number));
         response.setMessage("Stock decreased.");

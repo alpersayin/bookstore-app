@@ -6,7 +6,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Builder
 public class ApiResponse<T> extends Response {
     private T data;
 }
