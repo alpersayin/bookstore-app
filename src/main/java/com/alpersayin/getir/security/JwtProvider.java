@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class JwtProvider {
     private Long jwtExpirationInMillis;
 
     public String generateToken(Authentication authentication) {
-        UserDetailsServiceImpl principal = (UserDetailsServiceImpl) authentication.getPrincipal();
+        User principal = (User) authentication.getPrincipal();
         Map<String, Object> claims = new HashMap<>();
 
         return Jwts.builder()
