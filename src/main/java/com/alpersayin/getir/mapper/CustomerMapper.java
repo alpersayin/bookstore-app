@@ -16,6 +16,8 @@ public abstract class CustomerMapper {
     @Mapping(target = "roles", source = "roles")
     public abstract UserEntity mapToUser(RegisterRequest registerRequest, String encodedPassword, Set<UserRoleEntity> roles);
 
+    @Mapping(target = "password", ignore = true)
+    @Mapping(target = "roles", ignore = true)
     public abstract CustomerEntity mapToCustomer(RegisterRequest registerRequest);
 
 }

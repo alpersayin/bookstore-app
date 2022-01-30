@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Data
@@ -23,6 +24,6 @@ public class RegisterRequest {
     @Email
     private String email;
     private String phone;
-    @NotBlank
-    private Set<String> roles;
+    @NotEmpty
+    private Set<@NotBlank String> roles;
 }

@@ -28,7 +28,7 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.login(loginRequest), OK);
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<Response> register(@Valid @RequestBody RegisterRequest registerRequest) {
         return new ResponseEntity<>(customerService.register(registerRequest), OK);
     }

@@ -24,8 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) {
         UserEntity user = userEntityService.findByUserName(userName);
         return new org.springframework.security.core.userdetails.User(
-                userName,
-                "",
+                user.getUserName(),
+                user.getPassword(),
                 true, true, true, true, getAuthorities(user)
         );
     }
