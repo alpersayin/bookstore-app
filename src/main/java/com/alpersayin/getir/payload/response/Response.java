@@ -11,5 +11,5 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Response {
     private String message;
-    private LocalDateTime timestamp;
+    private static LocalDateTime timestamp = LocalDateTime.now();
 }

@@ -105,10 +105,7 @@ public class CustomerServiceImpl  {
         userRepository.insert(user);
         customerRepository.insert(customer);
 
-        return new Response(
-             "User registered successfully!",
-                LocalDateTime.now()
-        );
+        return new Response("User registered successfully!");
     }
 
     private Set<UserRoleEntity> getUserRoleEntities(Set<String> strRoles) {

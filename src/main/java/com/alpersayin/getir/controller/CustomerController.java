@@ -7,10 +7,7 @@ import com.alpersayin.getir.payload.response.Response;
 import com.alpersayin.getir.service.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,6 +28,11 @@ public class CustomerController {
     @PostMapping("/register")
     public ResponseEntity<Response> register(@Valid @RequestBody RegisterRequest registerRequest) {
         return new ResponseEntity<>(customerService.register(registerRequest), OK);
+    }
+
+    @GetMapping("/orders/{id}")
+    public ResponseEntity gerOrders(@PathVariable String id) {
+        return null;
     }
 
 }
