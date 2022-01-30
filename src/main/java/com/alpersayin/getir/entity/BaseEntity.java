@@ -1,15 +1,18 @@
 package com.alpersayin.getir.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.MappedSuperclass;
 
 @Data
 @MappedSuperclass
 public class BaseEntity {
-    private Integer id;
 
-    private void setId(Integer id) {
-        this.id = id;
-    }
+    @Id
+    private String id;
+
+
 }

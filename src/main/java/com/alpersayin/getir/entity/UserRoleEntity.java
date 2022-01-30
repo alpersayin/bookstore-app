@@ -15,7 +15,7 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "roles")
-public class UserRoleEntity extends BaseEntity{
+public class UserRoleEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 }

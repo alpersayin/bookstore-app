@@ -18,4 +18,14 @@ public class UserEntityServiceImpl implements UserEntityService {
                 .orElseThrow(() -> new UsernameNotFoundException("Username with: " + userName + " not found."));
     }
 
+    @Override
+    public Boolean existsByUserName(String userName) {
+        return userRepository.existsByUserName(userName);
+    }
+
+    @Override
+    public Boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
 }
