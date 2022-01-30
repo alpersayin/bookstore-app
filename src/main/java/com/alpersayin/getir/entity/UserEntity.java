@@ -14,10 +14,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Document(collection = "users")
 public class UserEntity extends BaseEntity {
-    @Indexed(unique=true)
+    //@Indexed(unique=true)
     private String userName;
     private String password;
-    @Indexed(unique=true)
+    //@Indexed(unique=true)
     private String email;
     @DBRef
     private Set<UserRoleEntity> roles = new HashSet<>();

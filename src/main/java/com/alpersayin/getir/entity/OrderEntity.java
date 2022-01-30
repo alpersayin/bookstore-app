@@ -18,6 +18,6 @@ import java.util.List;
 public class OrderEntity extends BaseEntity {
     private CustomerEntity customer;
     private LocalDateTime orderDateTime;
-    private OrderStatus status;
+    private OrderStatus status = OrderStatus.CREATED;
     private List<OrderItemEntity> orderItems;
 }

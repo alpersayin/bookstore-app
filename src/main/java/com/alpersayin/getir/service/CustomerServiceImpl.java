@@ -4,6 +4,7 @@ import com.alpersayin.getir.entity.CustomerEntity;
 import com.alpersayin.getir.entity.UserEntity;
 import com.alpersayin.getir.entity.UserRoleEntity;
 import com.alpersayin.getir.entity.enums.UserRole;
+import com.alpersayin.getir.exception.ApiNotFoundException;
 import com.alpersayin.getir.exception.ApiRequestException;
 import com.alpersayin.getir.mapper.CustomerMapper;
 import com.alpersayin.getir.payload.request.LoginRequest;
@@ -30,7 +31,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class CustomerServiceImpl  {
+public class CustomerServiceImpl implements CustomerService {
 
     private final UserEntityService userEntityService;
 
@@ -124,6 +125,12 @@ public class CustomerServiceImpl  {
             }
         }
         return roles;
+    }
+
+    @Override
+    public CustomerEntity findByCustomerId(String id) {
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new ApiNotFoundException("Customer Id with: " + id + " not found."));
     }
 
 }

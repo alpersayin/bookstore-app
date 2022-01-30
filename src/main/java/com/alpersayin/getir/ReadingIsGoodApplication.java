@@ -2,6 +2,7 @@ package com.alpersayin.getir;
 
 import com.alpersayin.getir.entity.UserRoleEntity;
 import com.alpersayin.getir.entity.enums.UserRole;
+import com.alpersayin.getir.repository.BookRepository;
 import com.alpersayin.getir.repository.UserRoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "books")
-@Data
 public class BookEntity extends BaseEntity {
     private String title;
     private String author;
