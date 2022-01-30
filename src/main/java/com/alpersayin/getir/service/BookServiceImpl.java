@@ -7,6 +7,9 @@ import com.alpersayin.getir.payload.request.BookRequest;
 import com.alpersayin.getir.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,26 +37,29 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public BookEntity increaseStock(String id, Integer number) {
-        // ToDo: update islemi guncellenecek, repository icine update query yazilacak yada MongoTemplate updateFirst kullanilacak
         BookEntity book = findByBookId(id);
-        Integer updatedStock = book.getStock() + number;
-        book.setStock(updatedStock);
-        return bookRepository.save(book);
+        Query query = Query.query(Criteria.where("id").is(id));
+        Update update = new Update();
+        update.set("stock", number + book.getStock());
+        mongoTemplate.updateFirst(query, update, BookEntity.class);
+        return findByBookId(id);
     }
 
     @Override
     @Transactional
     public BookEntity decreaseStock(String id, Integer number) {
-        // ToDo: update islemi guncellenecek, repository icine update query yazilacak yada MongoTemplate updateFirst kullanilacak
         BookEntity book = findByBookId(id);
+        Query query = Query.query(Criteria.where("id").is(id));
+        Update update = new Update();
         int updatedStock;
         if (book.getStock() <= number) {
             updatedStock = 0;
         } else {
             updatedStock = book.getStock() - number;
         }
-        book.setStock(updatedStock);
-        return bookRepository.save(book);
+        update.set("stock", updatedStock);
+        mongoTemplate.updateFirst(query, update, BookEntity.class);
+        return findByBookId(id);
     }
 
 }

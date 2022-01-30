@@ -9,4 +9,5 @@ public interface OrderService {
     OrderEntity createOrder(OrderRequest orderRequest);
     OrderEntity getOrder(String id);
     List<OrderEntity> getOrdersByCustomerId(String id, int page, int size);
+    List<OrderEntity> getOrdersByDate(String startDate, String endDate);
 }

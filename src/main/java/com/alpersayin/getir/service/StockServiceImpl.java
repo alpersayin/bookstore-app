@@ -14,9 +14,4 @@ public class StockServiceImpl implements StockService {
         return bookService.findByBookId(id).getStock();
     }
 
-    @Override
-    public Boolean checkStockForOrder(Integer stock, Integer quantity) {
-        return stock >= quantity;
-    }
-
 }

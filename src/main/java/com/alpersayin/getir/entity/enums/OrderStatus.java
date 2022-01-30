@@ -1,5 +1,5 @@
 package com.alpersayin.getir.entity.enums;
 
 public enum OrderStatus {
-    CREATED, PURCHASED
+    CREATED, PURCHASED, OUT_OF_STOCK
 }

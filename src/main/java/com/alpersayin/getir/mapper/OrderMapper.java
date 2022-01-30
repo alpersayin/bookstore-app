@@ -10,8 +10,6 @@ import com.alpersayin.getir.service.BookService;
 import com.alpersayin.getir.service.CustomerService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.ValueMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
