@@ -2,6 +2,7 @@ package com.alpersayin.getir.repository;
 
 import com.alpersayin.getir.entity.CustomerEntity;
 import com.alpersayin.getir.entity.OrderEntity;
+import com.alpersayin.getir.entity.enums.OrderStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -14,4 +15,5 @@ import java.util.List;
 public interface OrderRepository extends MongoRepository<OrderEntity, String> {
     Page<OrderEntity> findByCustomer(CustomerEntity customerEntity, Pageable pageable);
     List<OrderEntity> findOrderEntitiesByOrderDateTimeBetween(LocalDateTime startDate, LocalDateTime endDate);
+    List<OrderEntity> findAllByStatus(OrderStatus orderStatus);
 }
