@@ -34,7 +34,7 @@ public class BookController {
     @PatchMapping("/{id}/increase/{number}")
     public ResponseEntity<ApiResponse<BookEntity>> increaseBookStock(@PathVariable String id, @PathVariable @Min(1) @Max(50) Integer number) {
         ApiResponse<BookEntity> response = new ApiResponse<>();
-        response.setData(bookService.increaseStock(id, number));
+        response.setData(bookService.stockIncrease(id, number));
         response.setMessage("Stock increased.");
         return new ResponseEntity<>(response, OK);
     }
@@ -42,7 +42,7 @@ public class BookController {
     @PatchMapping("/{id}/decrease/{number}")
     public ResponseEntity<ApiResponse<BookEntity>> decreaseBookStock(@PathVariable String id, @PathVariable @Min(1) @Max(50) Integer number) {
         ApiResponse<BookEntity> response = new ApiResponse<>();
-        response.setData(bookService.decreaseStock(id, number));
+        response.setData(bookService.stockDecrease(id, number));
         response.setMessage("Stock decreased.");
         return new ResponseEntity<>(response, OK);
     }

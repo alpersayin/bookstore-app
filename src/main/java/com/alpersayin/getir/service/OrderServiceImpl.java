@@ -93,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
 
     private void updateStock(OrderEntity orderEntity) {
         orderEntity.getOrderItems()
-                .forEach(e -> bookService.decreaseStock(e.getBook().getId(), e.getQuantity()));
+                .forEach(e -> bookService.stockDecrease(e.getBook().getId(), e.getQuantity()));
     }
 
     private List<OrderItemEntity> getAvailableOrderItems(List<ItemRequest> items) {

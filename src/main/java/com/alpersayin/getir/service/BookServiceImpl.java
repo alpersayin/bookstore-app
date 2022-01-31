@@ -36,7 +36,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public BookEntity increaseStock(String id, Integer number) {
+    public BookEntity stockIncrease(String id, Integer number) {
         BookEntity book = findByBookId(id);
         Query query = Query.query(Criteria.where("id").is(id));
         Update update = new Update();
@@ -47,7 +47,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public BookEntity decreaseStock(String id, Integer number) {
+    public BookEntity stockDecrease(String id, Integer number) {
         BookEntity book = findByBookId(id);
         Query query = Query.query(Criteria.where("id").is(id));
         Update update = new Update();
