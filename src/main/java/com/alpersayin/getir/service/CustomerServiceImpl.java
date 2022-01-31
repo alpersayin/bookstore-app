@@ -86,6 +86,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Transactional
     public Response register(RegisterRequest registerRequest) {
+
+        // Check if UserRole exist in DB for case study.
+        checkAndPersistUserRole();
+
         String email = registerRequest.getEmail();
         if (userEntityService.existsByEmail(email)) {
             throw new ApiRequestException("Email is already in use.");
@@ -131,6 +135,26 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerEntity findByCustomerId(String id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new ApiNotFoundException("Customer Id with: " + id + " not found."));
+    }
+
+    private void checkAndPersistUserRole() {
+        if (userRoleRepository.findAll().size() > 0) {
+               System.out.println("User Roles already exists.");
+        } else persistUserRoles(userRoleRepository);
+    }
+
+    private static void persistUserRoles(UserRoleRepository userRoleRepository) {
+        UserRoleEntity role1 = new UserRoleEntity(
+                UserRole.ROLE_ADMIN
+        );
+        UserRoleEntity role2 = new UserRoleEntity(
+                UserRole.ROLE_CUSTOMER
+        );
+        UserRoleEntity role3 = new UserRoleEntity(
+                UserRole.ROLE_USER
+        );
+        List<UserRoleEntity> userRoleEntityList = Arrays.asList(role1,role2,role3);
+        userRoleRepository.saveAll(userRoleEntityList);
     }
 
 }

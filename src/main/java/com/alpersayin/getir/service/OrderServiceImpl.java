@@ -73,8 +73,10 @@ public class OrderServiceImpl implements OrderService {
         OrderEntity paidOrder = new OrderEntity();
 
         if (isPurchased(orderEntity)) {
-            paidOrder = purchaseOrder(orderEntity);
-            updateStock(paidOrder);
+            synchronized (this) {
+                paidOrder = purchaseOrder(orderEntity);
+                updateStock(paidOrder);
+            }
         } else {
             throw new ApiRequestException("Payment for Order still not made for Order Id: " + paidOrder.getId());
         }
