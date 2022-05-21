@@ -1,5 +1,5 @@
-# Reading Is Good
-The application is created for Java Case Study.
+# Bookstore App
+The application is created for a Case Study.
 ## Run
 Open terminal in project `root` folder. 
 Start the application with `docker-compose up` command.
