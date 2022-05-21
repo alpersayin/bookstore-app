@@ -8,7 +8,7 @@ The application will start on  http://localhost:8080/
 
 ## Start
 You can access **MongoDB** admin interface with http://localhost:8081/
-Database will be created after first request. If database is not created automatically, create database by using** Mongo Express**
+Database will be created after first request. If database is not created automatically, create database by using **Mongo Express**.
 
 After application successfully build;
 You must create new user to test the application due to enpoints is secured with JWT.
@@ -30,7 +30,7 @@ You must create new user to test the application due to enpoints is secured with
 3.  After login successfully you get security token. Use this token for further request.
 
 ## API Documentation
-Postman: https://documenter.getpostman.com/view/9528068/UVeDrSCh
-Swagger: http://localhost:8080/swagger-ui/index.html
+Postman: https://documenter.getpostman.com/view/9528068/UVeDrSCh <br/>
+Swagger: http://localhost:8080/swagger-ui/index.html <br/>
 Raw Data http://localhost:8080/v3/api-docs/
 
